@@ -16,13 +16,10 @@ public class Admin extends User implements Reportable, Loggable {
         this.system = system;
     }
 
-    @Override
+
     public void showDashboard() {
-        System.out.println("   Admin Dashboard for " + name);
-        System.out.println("Logs recorded this session: " + logCount);
     }
 
-    @Override
     public String generateReport() {
         if (system == null) {
             return "Report: System not linked.";
@@ -30,7 +27,6 @@ public class Admin extends User implements Reportable, Loggable {
         return system.generateSystemReport();
     }
 
-    @Override
     public void logActivity(String message, Object... args) {
         String m = String.format(message, args);
         if (logCount < auditLogs.length) {
